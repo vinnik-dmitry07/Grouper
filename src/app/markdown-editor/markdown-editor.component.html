@@ -1,0 +1,10 @@
+<md-editor #md="ngModel" name="Content" (onEditorLoaded)="onEditorLoaded($event)"
+           [preRender]="preRender" [postRender]="postRender"
+           (onPreviewDomChanged)="onPreviewDomChanged($event)"
+           [upload]="doUpload" [(ngModel)]="content" [mode]="mode" [options]="options" required maxlength="600" height="400px"></md-editor>
+<!--<br>-->
+<!--<div class="well well-sm">-->
+<!--  <label class="control-label">Form validate:</label>-->
+<!--  <p>Required: {{ md?.errors?.required }}</p>-->
+<!--  <p>Maxlength: {{ md?.errors?.maxlength | json }}</p>-->
+<!--</div>-->
