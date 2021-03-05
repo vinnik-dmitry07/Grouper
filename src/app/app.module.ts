@@ -23,6 +23,7 @@ import {EqualPasswordsValidatorDirective} from './shared/equal-passwords.directi
 import {MatExpansionModule} from '@angular/material/expansion';
 import {PostComponent} from './post/post.component';
 import {SigninFormComponent} from './signin-form/signin-form.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import {SigninFormComponent} from './signin-form/signin-form.component';
     MatExpansionModule,
     FormsModule,
     ReactiveFormsModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,29 @@
+<form appEqualPasswords id="signin-form" (ngSubmit)="onSubmit()" #signinForm="ngForm">
+  <mat-card>
+    <mat-card-title>Вхід</mat-card-title>
+    <mat-card-content>
+        <p>
+          <mat-form-field hideRequiredMarker class="full-width" appearance="fill">
+            <mat-label>Пошта</mat-label>
+            <input matInput required name="email">
+  <!--          <div [hidden]="email.valid || email.pristine"-->
+  <!--               class="alert alert-danger">-->
+  <!--            Необхідна пошта-->
+  <!--          </div>-->
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field hideRequiredMarker class="full-width" appearance="fill">
+            <mat-label>Пароль</mat-label>
+            <input matInput type="password" id="password" required name="password">
+            <mat-hint>Букви, цифри</mat-hint>
+          </mat-form-field>
+        </p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!signinForm.form.valid">Увійти</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
