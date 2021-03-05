@@ -11,13 +11,13 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
+    <router-outlet></router-outlet>
 <!--    <app-signin-form></app-signin-form>-->
-    <app-signup-form></app-signup-form>
-    <app-group-card *ngFor="let g of groups" [name]="g.name" [teacher]="g.teacher" [iconURL]="g.iconURL" [link]="g.link"></app-group-card>
-<!--    <app-group-card></app-group-card>-->
-    <app-post [done]=true [mark]="'10/10'"></app-post>
-    <app-post [mark]="'a'"></app-post>
-    <app-post></app-post>
-
+<!--    <app-signup-form></app-signup-form>-->
+<!--    <app-group-card *ngFor="let g of groups" [name]="g.name" [teacher]="g.teacher" [iconURL]="g.iconURL" [link]="g.link"></app-group-card>-->
+<!--&lt;!&ndash;    <app-group-card></app-group-card>&ndash;&gt;-->
+<!--    <app-post [done]=true [mark]="'10/10'"></app-post>-->
+<!--    <app-post [mark]="'a'"></app-post>-->
+<!--    <app-post></app-post>-->
   </mat-sidenav-content>
 </mat-sidenav-container>
