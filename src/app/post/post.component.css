@@ -1,0 +1,14 @@
+/* Colors for the ripple elements.*/
+/* stylelint-disable-next-line material/theme-mixin-api */
+/* stylelint-disable-next-line material/theme-mixin-api */
+/* stylelint-disable material/no-prefixes */
+/* stylelint-enable */
+p {
+  padding: 0 20px;
+}
+
+.accent-background, .accent-background:hover {
+  background: #8bc34a !important;
+}
+
+/*# sourceMappingURL=post.component.css.map */

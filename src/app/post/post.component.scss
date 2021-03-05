@@ -1,0 +1,13 @@
+@import '../../../node_modules/@angular/material/theming';
+
+p {
+  padding: 0 20px;
+}
+
+//$config: mat-get-color-config(mat-light-theme(mat-palette($mat-indigo), mat-palette($mat-pink)));
+//$primary: map-get($config, primary);
+//$accent: map-get($config, accent);
+
+.accent-background, .accent-background:hover {
+  background: mat-color(mat-palette($mat-light-green)) !important;
+}

@@ -12,9 +12,17 @@ import {GroupCardComponent} from './group-card/group-card.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LMarkdownEditorModule} from 'ngx-markdown-editor';
 import {MarkdownEditorComponent} from './markdown-editor/markdown-editor.component';
+import {SignupFormComponent} from './signup-form/signup-form.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {EqualPasswordsValidatorDirective} from './shared/equal-passwords.directive';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {PostComponent} from './post/post.component';
+import {SigninFormComponent} from './signin-form/signin-form.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +30,10 @@ import {MarkdownEditorComponent} from './markdown-editor/markdown-editor.compone
     TopBarComponent,
     GroupCardComponent,
     MarkdownEditorComponent,
+    SignupFormComponent,
+    EqualPasswordsValidatorDirective,
+    PostComponent,
+    SigninFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,8 +45,13 @@ import {MarkdownEditorComponent} from './markdown-editor/markdown-editor.compone
     MatMenuModule,
     MatSidenavModule,
     MatListModule,
-    FormsModule,
     LMarkdownEditorModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatExpansionModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

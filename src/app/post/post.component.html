@@ -1,0 +1,27 @@
+<p>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header [collapsedHeight]="'48px'" [expandedHeight]="'48px'"
+                                [ngClass]="done ? 'accent-background' : ''">
+      <mat-panel-title>
+        Пост1
+      </mat-panel-title>
+
+      <mat-panel-description>
+          Завдання з програмування
+      </mat-panel-description>
+
+      <span style="margin-right: 16px; width: 30px">{{mark}}</span>
+    </mat-expansion-panel-header>
+    <div style="padding: 10px 0">
+      <b>Опис:</b>
+
+      <div>Написати classroom.</div>
+    </div>
+    <form>
+      <b>Відповідь:</b>
+      <app-markdown-editor></app-markdown-editor>
+      <button mat-raised-button color="primary" type="submit" [disabled]="done">Оновити відповідь</button>
+    </form>
+  </mat-expansion-panel>
+</p>
+
