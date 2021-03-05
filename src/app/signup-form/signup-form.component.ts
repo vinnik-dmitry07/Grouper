@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import { BaseResponse } from '../shared/models/base-response';
+import { UserModel } from '../shared/models/user';
+import { UserService } from '../shared/services/user.service';
 
 @Component({
   selector: 'app-signup-form',
@@ -7,21 +10,33 @@ import {Component, OnInit} from '@angular/core';
 })
 
 export class SignupFormComponent implements OnInit {
+
+  constructor(private userSerive:UserService){}
+
+
   // TODO: Remove this when we're done
   get diagnostic(): string {
       return JSON.stringify(this.user);
   }
 
-  roles = ['Студент', 'Викладач'];
+  roles = [{label:"Студент", value:"student"}, {label:"Викладач", value:"teacher"}];
 
-  user: any = {}; //{firstName: 'Леся', lastName: 'Українка', email: 'vinnik.dmitry07@gmail.com', role: this.roles[1]}; // password: 'contra spem spero'
+  user: UserModel; //{firstName: 'Леся', lastName: 'Українка', email: 'vinnik.dmitry07@gmail.com', role: this.roles[1]}; // password: 'contra spem spero'
 
   submitted = false;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.user = new UserModel();
+  }
 
   onSubmit(): void {
     this.submitted = true;
+
+    this.userSerive.signUp(this.user).subscribe((data:BaseResponse) =>{
+      alert(data.message);
+    },
+    error => {console.log(error);
+    })
   }
 
   // showFormControls(form: any): string {
