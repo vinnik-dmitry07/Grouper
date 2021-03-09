@@ -62,8 +62,8 @@
         <mat-form-field class="full-width" appearance="fill">
           <mat-label>Роль</mat-label>
           <mat-select required [(ngModel)]="user.role" name="password" #role="ngModel">
-            <mat-option *ngFor="let role of roles" [value]="role">
-              {{role}}
+            <mat-option *ngFor="let role of roles" [value]="role.value">
+              {{role.label}}
             </mat-option>
             <div [hidden]="role.valid || role.pristine" class="alert alert-danger">
               Виберіть роль

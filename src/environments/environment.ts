@@ -1,9 +1,13 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-
+let host = "https://grouper-8team-api.herokuapp.com";
 export const environment = {
-  production: false
+
+  production: false,
+  user:{
+    signUp:host+"/api/User/sign-up"
+  }
 };
 
 /*
