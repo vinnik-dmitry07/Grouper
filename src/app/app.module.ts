@@ -23,9 +23,9 @@ import {EqualPasswordsValidatorDirective} from './shared/equal-passwords.directi
 import {MatExpansionModule} from '@angular/material/expansion';
 import {PostComponent} from './post/post.component';
 import {SigninFormComponent} from './signin-form/signin-form.component';
-import { AppRoutingModule } from './app-routing.module';
-import { UserService } from './shared/services/user.service';
-import { HttpClientModule } from '@angular/common/http';
+import {AppRoutingModule} from './app-routing.module';
+import {UserService} from './shared/services/user.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [

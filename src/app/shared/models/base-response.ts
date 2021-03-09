@@ -1,4 +1,4 @@
-export class BaseResponse{
-    //errorCode: number;
-    message: string;
+export class BaseResponse {
+  //errorCode: number;
+  message: string;
 }

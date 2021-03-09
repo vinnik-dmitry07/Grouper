@@ -1,30 +1,31 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { environment } from "src/environments/environment";
-import { BaseResponse } from "../models/base-response";
-import { UserModel } from "../models/user";
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {environment} from 'src/environments/environment';
+import {BaseResponse} from '../models/base-response';
+import {UserModel} from '../models/user';
 
 @Injectable()
-export class UserService{
-    constructor(private http:HttpClient){}
-    
-    signUp(user:UserModel):Observable<BaseResponse>{
-        let url = environment.user.signUp;
+export class UserService {
+  constructor(private http: HttpClient) {
+  }
 
-        const body={
-            firstName:user.firstName,
-            lastName:user.lastName,
-            email:user.email,
-            password:user.password,
-            role:user.role
-        };
-        
-        let headers=new HttpHeaders({
-            "Content-Type": "application/json"
-        });
-        let options={headers:headers};
+  signUp(user: UserModel): Observable<BaseResponse> {
+    const url = environment.user.signUp;
 
-        return this.http.post<BaseResponse>(url, body, options);
-    }
+    const body = {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      password: user.password,
+      role: user.role
+    };
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    const options = {headers};
+
+    return this.http.post<BaseResponse>(url, body, options);
+  }
 }
