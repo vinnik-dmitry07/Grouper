@@ -4,7 +4,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {TopBarComponent} from './top-bar/top-bar.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
@@ -26,17 +25,22 @@ import {SigninFormComponent} from './signin-form/signin-form.component';
 import {AppRoutingModule} from './app-routing.module';
 import {UserService} from './shared/services/user.service';
 import {HttpClientModule} from '@angular/common/http';
+import { GroupsComponent } from './groups/groups.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TopBarComponent,
     GroupCardComponent,
     MarkdownEditorComponent,
     SignupFormComponent,
     EqualPasswordsValidatorDirective,
     PostComponent,
     SigninFormComponent,
+    GroupsComponent,
+    NavigationComponent,
+    PostsComponent,
   ],
   imports: [
     BrowserModule,

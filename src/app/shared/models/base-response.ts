@@ -1,4 +1,4 @@
 export class BaseResponse {
-  //errorCode: number;
+  // errorCode: number;
   message: string;
 }

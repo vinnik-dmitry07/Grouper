@@ -65,9 +65,9 @@
             <mat-option *ngFor="let role of roles" [value]="role.value">
               {{role.label}}
             </mat-option>
-            <div [hidden]="role.valid || role.pristine" class="alert alert-danger">
+            <mat-error *ngIf="signupForm.controls['role']?.errors?.required">
               Виберіть роль
-            </div>
+            </mat-error>
           </mat-select>
         </mat-form-field>
       </p>
@@ -79,28 +79,4 @@
       </button>
     </mat-card-actions>
   </mat-card>
-
-  <div class="container">
-    <div [hidden]="!submitted">
-      <h2>You submitted the following:</h2>
-      <div class="row">
-        <div class="col-xs-3">Ім'я</div>
-        <div class="col-xs-9">{{ user.firstName }}</div>
-      </div>
-      <div class="row">
-        <div class="col-xs-3">Прізвище</div>
-        <div class="col-xs-9">{{ user.lastName }}</div>
-      </div>
-      <div class="row">
-        <div class="col-xs-3">Пошта</div>
-        <div class="col-xs-9">{{ user.email }}</div>
-      </div>
-      <div class="row">
-        <div class="col-xs-3">Роль</div>
-        <div class="col-xs-9">{{ user.role }}</div>
-      </div>
-      <br>
-      <button class="btn btn-primary" (click)="submitted=false">Edit</button>
-    </div>
-  </div>
 </form>

@@ -1,7 +1,7 @@
 <mat-card class="example-card">
   <mat-card-header>
     <div mat-card-avatar [ngStyle]="{'background-image': 'url(' + iconURL + ')'}" class="example-header-image"></div>
-    <mat-card-title>{{name}}</mat-card-title>
+    <mat-card-title><a routerLink="/posts">{{name}}</a></mat-card-title>
     <mat-card-subtitle>{{teacher}}</mat-card-subtitle>
 
     <span class="fill-space"></span>
@@ -24,7 +24,7 @@
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <input style="width: 0; height: 0" #copyInput value="{{link}}">
+    <input style="display: none" #copyInput value="{{link}}">
     <button mat-button (click)="copyToClipboard(copyInput)">Посилання</button>
   </mat-card-actions>
 </mat-card>

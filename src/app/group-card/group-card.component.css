@@ -7,3 +7,15 @@
 .example-header-image {
   background-size: cover;
 }
+
+mat-card-title {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 250px;
+  text-overflow: ellipsis;
+}
+
+mat-card-title > a {
+  /*color: black;*/
+  color: rgba(0,0,0,.87);
+}

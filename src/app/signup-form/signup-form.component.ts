@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {BaseResponse} from '../shared/models/base-response';
 import {UserModel} from '../shared/models/user';
 import {UserService} from '../shared/services/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-signup-form',
@@ -11,9 +12,8 @@ import {UserService} from '../shared/services/user.service';
 
 export class SignupFormComponent implements OnInit {
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
   }
-
 
   // TODO: Remove this when we're done
   get diagnostic(): string {
@@ -34,12 +34,15 @@ export class SignupFormComponent implements OnInit {
   onSubmit(): void {
     this.submitted = true;
 
-    this.userService.signUp(this.user).subscribe((data: BaseResponse) => {
-        alert(data.message);
+    this.userService.signUp(this.user).subscribe(
+      (data: BaseResponse) => {
+        this.router.navigateByUrl('/signin');
       },
       error => {
+        alert(error);
         console.log(error);
-      });
+      }
+    );
   }
 
   // showFormControls(form: any): string {

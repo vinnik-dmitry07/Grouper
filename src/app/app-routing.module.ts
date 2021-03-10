@@ -3,10 +3,14 @@ import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {SignupFormComponent} from './signup-form/signup-form.component';
 import {SigninFormComponent} from './signin-form/signin-form.component';
+import {GroupsComponent} from './groups/groups.component';
+import {PostsComponent} from './posts/posts.component';
 
 const routes: Routes = [
-  { path: 'signup', component: SignupFormComponent },
-  { path: 'signin', component: SigninFormComponent },
+  {path: '', component: GroupsComponent},
+  {path: 'signup', component: SignupFormComponent},
+  {path: 'signin', component: SigninFormComponent},
+  {path: 'posts', component: PostsComponent},
   // { path: '**', component: PageNotFoundComponent },
 ];
 
