@@ -9,11 +9,17 @@ const TOKEN = 'TOKEN';
 
 @Injectable()
 export class UserService {
+  user: UserModel;
+
   constructor(private http: HttpClient) {
+    this.user = new UserModel();
+    if (this.isLogged()) {
+      this.loadUser();
+    }
   }
 
   signUp(user: UserModel): Observable<BaseResponse> {
-    const url = environment.user.signupURL;
+    const url = environment.userURLs.signUp;
 
     const body = {
       firstName: user.firstName,
@@ -32,7 +38,7 @@ export class UserService {
   }
 
   signIn(user: UserModel): Observable<BaseResponse> {
-    const url = environment.user.signinURL;
+    const url = environment.userURLs.signIn;
 
     const body = {
       email: user.email,
@@ -47,11 +53,35 @@ export class UserService {
     return this.http.post<BaseResponse>(url, body, options);
   }
 
+  logOut(): void {
+    localStorage.removeItem(TOKEN);
+  }
+
   setToken(token: string): void {
     localStorage.setItem(TOKEN, token);
   }
 
   isLogged(): boolean {
     return localStorage.getItem(TOKEN) != null;
+  }
+
+  loadUser(): void {
+    const url = environment.userURLs.userInfo;
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem(TOKEN)
+    });
+    const options = {headers};
+
+    this.http.get<BaseResponse>(url, options).subscribe(
+      (data: any) => {
+        this.user.email = data.email;
+      },
+      error => {
+        alert(error);
+        console.log(error);
+      }
+    );
   }
 }

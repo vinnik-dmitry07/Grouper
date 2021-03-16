@@ -17,6 +17,9 @@ export class SigninFormComponent implements OnInit {
   submitted = false;
 
   ngOnInit(): void {
+    if (this.userService.isLogged()) {
+      this.router.navigateByUrl('/groups');
+    }
     this.user = new UserModel();
   }
 

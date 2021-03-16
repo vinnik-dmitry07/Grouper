@@ -4,8 +4,8 @@
   </button>
   <span>{{pageName}}</span>
   <span class="fill-space"></span>
-  vinnik.dmitry07@gmail.com
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+  {{userService.user?.email}}
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="this.logOut()">
     <mat-icon>exit_to_app</mat-icon>
   </button>
 </mat-toolbar>
@@ -13,6 +13,7 @@
 <mat-sidenav-container>
   <mat-sidenav #navigation mode="over" fixedTopGap="56">
     <mat-nav-list>
+      <a mat-list-item routerLink="/">Головна</a>
       <a mat-list-item routerLink="/settings">Налаштування</a>
       <a mat-list-item routerLink="/tasks">Завдання</a>
     </mat-nav-list>
