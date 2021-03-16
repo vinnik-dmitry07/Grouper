@@ -27,7 +27,7 @@ export class SigninFormComponent implements OnInit {
       (data: any) => {
         if (data.token) {
           this.userService.setToken(data.token);
-          this.router.navigateByUrl('/');
+          this.router.navigateByUrl('/groups');
         }
       },
       error => {

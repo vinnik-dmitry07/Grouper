@@ -28,6 +28,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { GroupsComponent } from './groups/groups.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { PostsComponent } from './posts/posts.component';
+import { LandingComponent } from './landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { PostsComponent } from './posts/posts.component';
     GroupsComponent,
     NavigationComponent,
     PostsComponent,
+    LandingComponent,
   ],
   imports: [
     BrowserModule,

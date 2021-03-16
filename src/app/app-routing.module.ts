@@ -5,9 +5,11 @@ import {SignupFormComponent} from './signup-form/signup-form.component';
 import {SigninFormComponent} from './signin-form/signin-form.component';
 import {GroupsComponent} from './groups/groups.component';
 import {PostsComponent} from './posts/posts.component';
+import {LandingComponent} from './landing/landing.component';
 
 const routes: Routes = [
-  {path: '', component: GroupsComponent},
+  {path: '', component: LandingComponent},
+  {path: 'groups', component: GroupsComponent},
   {path: 'signup', component: SignupFormComponent},
   {path: 'signin', component: SigninFormComponent},
   {path: 'posts', component: PostsComponent},
