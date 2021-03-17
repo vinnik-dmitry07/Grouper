@@ -4,7 +4,7 @@
   </button>
   <span>{{pageName}}</span>
   <span class="fill-space"></span>
-  {{userService.user?.email}}
+  {{email}}
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="this.logOut()">
     <mat-icon>exit_to_app</mat-icon>
   </button>
@@ -14,6 +14,7 @@
   <mat-sidenav #navigation mode="over" fixedTopGap="56">
     <mat-nav-list>
       <a mat-list-item routerLink="/">Головна</a>
+      <a mat-list-item routerLink="/change-groups">Зміна груп</a>
       <a mat-list-item routerLink="/settings">Налаштування</a>
       <a mat-list-item routerLink="/tasks">Завдання</a>
     </mat-nav-list>

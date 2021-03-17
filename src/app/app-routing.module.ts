@@ -6,6 +6,7 @@ import {SigninFormComponent} from './signin-form/signin-form.component';
 import {GroupsComponent} from './groups/groups.component';
 import {PostsComponent} from './posts/posts.component';
 import {LandingComponent} from './landing/landing.component';
+import {GroupsChangeComponent} from './groups-change/groups-change.component';
 
 const routes: Routes = [
   {path: '', component: LandingComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'signup', component: SignupFormComponent},
   {path: 'signin', component: SigninFormComponent},
   {path: 'posts', component: PostsComponent},
+  {path: 'change-groups', component: GroupsChangeComponent},
   // { path: '**', component: PageNotFoundComponent },
 ];
 

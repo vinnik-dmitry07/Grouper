@@ -25,10 +25,13 @@ import {SigninFormComponent} from './signin-form/signin-form.component';
 import {AppRoutingModule} from './app-routing.module';
 import {UserService} from './shared/services/user.service';
 import {HttpClientModule} from '@angular/common/http';
-import { GroupsComponent } from './groups/groups.component';
-import { NavigationComponent } from './navigation/navigation.component';
-import { PostsComponent } from './posts/posts.component';
-import { LandingComponent } from './landing/landing.component';
+import {GroupsComponent} from './groups/groups.component';
+import {NavigationComponent} from './navigation/navigation.component';
+import {PostsComponent} from './posts/posts.component';
+import {LandingComponent} from './landing/landing.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatTreeModule} from '@angular/material/tree';
+import {GroupsChangeComponent} from './groups-change/groups-change.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,7 @@ import { LandingComponent } from './landing/landing.component';
     NavigationComponent,
     PostsComponent,
     LandingComponent,
+    GroupsChangeComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +66,9 @@ import { LandingComponent } from './landing/landing.component';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCheckboxModule,
+    MatTreeModule
   ],
   providers: [
     UserService

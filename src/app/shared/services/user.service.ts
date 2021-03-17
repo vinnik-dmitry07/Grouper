@@ -9,13 +9,7 @@ const TOKEN = 'TOKEN';
 
 @Injectable()
 export class UserService {
-  user: UserModel;
-
   constructor(private http: HttpClient) {
-    this.user = new UserModel();
-    if (this.isLogged()) {
-      this.loadUser();
-    }
   }
 
   signUp(user: UserModel): Observable<BaseResponse> {
@@ -65,7 +59,7 @@ export class UserService {
     return localStorage.getItem(TOKEN) != null;
   }
 
-  loadUser(): void {
+  loadUser() {
     const url = environment.userURLs.userInfo;
 
     const headers = new HttpHeaders({
@@ -74,14 +68,6 @@ export class UserService {
     });
     const options = {headers};
 
-    this.http.get<BaseResponse>(url, options).subscribe(
-      (data: any) => {
-        this.user.email = data.email;
-      },
-      error => {
-        alert(error);
-        console.log(error);
-      }
-    );
+    return this.http.get<BaseResponse>(url, options);
   }
 }
