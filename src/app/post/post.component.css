@@ -1,3 +1,7 @@
 p {
   padding: 0 20px;
 }
+
+mat-expansion-panel mat-label {
+  font-weight: 500;
+}

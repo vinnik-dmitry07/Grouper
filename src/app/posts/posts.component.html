@@ -1,5 +1,7 @@
-<app-navigation>
-  <app-post [done]=true [mark]="'10/10'"></app-post>
-  <app-post [mark]="'a'"></app-post>
-  <app-post></app-post>
+<app-navigation [pageName]="'Пости'">
+  <div class="container">
+    <app-post [done]=true [mark]="'10/10'"></app-post>
+    <app-post [mark]="'a'"></app-post>
+    <app-post></app-post>
+  </div>
 </app-navigation>

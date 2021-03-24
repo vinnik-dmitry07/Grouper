@@ -1,7 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from '../shared/services/user.service';
 import {Router} from '@angular/router';
-import {UserModel} from '../shared/models/user';
 
 @Component({
   selector: 'app-navigation',
@@ -9,6 +8,7 @@ import {UserModel} from '../shared/models/user';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
+  @Input()
   pageName: string;
   email: string;
 

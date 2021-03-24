@@ -1,4 +1,8 @@
-<app-navigation>
-  <app-group-card *ngFor="let g of groups" [name]="g.name" [teacher]="g.teacher" [iconURL]="g.iconURL"
-                  [link]="g.link"></app-group-card>
+<app-navigation [pageName]="'Групи'">
+  <div nav-buttons>
+    <button mat-icon-button aria-label="Приєднатися" (click)="openDialog()">
+      <mat-icon>group_add</mat-icon>
+    </button>
+  </div>
+  <app-group-card *ngFor="let g of groups" [group]="g"></app-group-card>
 </app-navigation>

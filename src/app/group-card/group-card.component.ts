@@ -1,6 +1,7 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 import GeoPattern from 'geopattern';
+import {Group} from '../shared/models/group';
 
 @Component({
   selector: 'app-group-card',
@@ -9,19 +10,14 @@ import GeoPattern from 'geopattern';
 })
 export class GroupCardComponent implements OnInit {
   imageURL: string;
+
   @Input()
-  name: string;
-  @Input()
-  teacher: string;
-  @Input()
-  iconURL: string;
-  @Input()
-  link: string;
+  group: Group;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.imageURL = GeoPattern.generate(this.name).toDataUrl();
+    this.imageURL = GeoPattern.generate(this.group.name).toDataUrl();
   }
 
   copyToClipboard(copyInput): void {

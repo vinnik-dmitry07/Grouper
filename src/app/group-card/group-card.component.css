@@ -1,21 +1,73 @@
-.example-card {
-  max-width: 400px;
-  margin: 20px;
-  display: inline-block;
-}
-
-.example-header-image {
+.header-image {
   background-size: cover;
 }
 
+mat-card-header {
+  display: flex;
+}
+
+::ng-deep .mat-card-header-text {
+  min-width: 0;
+  flex-grow: 1;
+}
+
 mat-card-title {
-  overflow: hidden;
   white-space: nowrap;
-  width: 250px;
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 
+mat-card-title > a, mat-card-title > input {
+  font-weight: 500;
+}
+
 mat-card-title > a {
-  /*color: black;*/
-  color: rgba(0,0,0,.87);
+  display: inline;
+  max-width: 100%;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+mat-card-actions > button {
+  margin-right: 10px;
+}
+
+mat-card-content:last-of-type {
+  /*margin-bottom: 0;*/
+}
+
+mat-card {
+  width: 400px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+}
+
+.fill-image {
+  flex-grow: 1;
+}
+
+:host {
+  display: inline-block;
+}
+
+mat-card-actions {
+  padding-top: 0 !important;
+  margin-left: 0 !important;
+  margin-bottom: -3px !important;
+}
+
+[contenteditable=true] {
+  box-shadow: 0 0 0 1px black;
+  border-radius: 1px;
+}
+
+mat-card-title input {
+  width: 100%;
+  padding: 0;
+  border: 0;
+}
+
+mat-card-content mat-label {
+  font-weight: 500;
 }

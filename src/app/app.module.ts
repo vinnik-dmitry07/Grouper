@@ -32,6 +32,9 @@ import {LandingComponent} from './landing/landing.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatTreeModule} from '@angular/material/tree';
 import {GroupsChangeComponent} from './groups-change/groups-change.component';
+import {NgxLinkifyjsModule} from 'ngx-linkifyjs';
+import {GroupIdDialogComponent} from './group-id-dialog/group-id-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,7 @@ import {GroupsChangeComponent} from './groups-change/groups-change.component';
     PostsComponent,
     LandingComponent,
     GroupsChangeComponent,
+    GroupIdDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,12 +72,14 @@ import {GroupsChangeComponent} from './groups-change/groups-change.component';
     AppRoutingModule,
     HttpClientModule,
     MatCheckboxModule,
-    MatTreeModule
+    MatTreeModule,
+    NgxLinkifyjsModule.forRoot(),
+    MatDialogModule,
   ],
   providers: [
     UserService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
 }

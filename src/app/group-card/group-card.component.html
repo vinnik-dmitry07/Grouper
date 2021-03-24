@@ -1,10 +1,13 @@
-<mat-card class="example-card">
+<mat-card>
   <mat-card-header>
-    <div mat-card-avatar [ngStyle]="{'background-image': 'url(' + iconURL + ')'}" class="example-header-image"></div>
-    <mat-card-title><a routerLink="/posts">{{name}}</a></mat-card-title>
-    <mat-card-subtitle>{{teacher}}</mat-card-subtitle>
+    <div mat-card-avatar [ngStyle]="{'background-image': 'url(' + group.iconURL + ')'}"
+         class="header-image"></div>
 
-    <span class="fill-space"></span>
+    <mat-card-title [style]="group.editing ? 'box-shadow: 0 0 0 1px black; border-radius: 1px;' : null">
+      <input *ngIf="group.editing" value="{{group.name}}">
+      <a *ngIf="!group.editing" routerLink="/posts">{{group.name}}</a>
+    </mat-card-title>
+    <mat-card-subtitle>{{group.teacher}}</mat-card-subtitle>
 
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
       <mat-icon>more_vert</mat-icon>
@@ -15,16 +18,24 @@
         <mat-icon>dialpad</mat-icon>
         <span>Скасувати реєстрацію</span>
       </button>
+      <button mat-menu-item (click)="group.editing = true">
+        <mat-icon>edit</mat-icon>
+        <span>Редагувати</span>
+      </button>
     </mat-menu>
   </mat-card-header>
-  <div style="width: 100%; height: 187px" [ngStyle]="{'background': imageURL}"></div>
-  <mat-card-content>
-    <p>
-      Посилання Meet: https://meet.google.com/lookup/abkxr7vwoq
-    </p>
+  <mat-card-content class="fill-image" [ngStyle]="{'background': imageURL}"></mat-card-content>
+  <mat-card-content *ngIf="group.description">
+    <mat-label>Опис:</mat-label>
+    <p [contentEditable]="group.editing === true">{{group.description}}</p>
+  </mat-card-content>
+  <mat-card-content *ngIf="group.useful">
+    <mat-label>Корисне:</mat-label>
+    <p [contentEditable]="group.editing === true" [innerHTML]="group.useful | linkify"></p>
   </mat-card-content>
   <mat-card-actions>
-    <input style="display: none" #copyInput value="{{link}}">
-    <button mat-button (click)="copyToClipboard(copyInput)">Посилання</button>
+    <input style="display: none" #copyInput value="{{group.link}}">
+    <button *ngIf="group.editing" mat-flat-button color="accent" (click)="group.editing = false">Зберегти</button>
+    <button mat-flat-button color="primary" (click)="copyToClipboard(copyInput)">Посилання</button>
   </mat-card-actions>
 </mat-card>

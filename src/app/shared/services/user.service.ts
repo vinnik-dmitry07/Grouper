@@ -59,7 +59,7 @@ export class UserService {
     return localStorage.getItem(TOKEN) != null;
   }
 
-  loadUser() {
+  loadUser(): Observable<UserModel> {
     const url = environment.userURLs.userInfo;
 
     const headers = new HttpHeaders({
@@ -68,6 +68,6 @@ export class UserService {
     });
     const options = {headers};
 
-    return this.http.get<BaseResponse>(url, options);
+    return this.http.get<UserModel>(url, options);
   }
 }

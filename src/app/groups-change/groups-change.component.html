@@ -1,6 +1,5 @@
-<app-navigation>
+<app-navigation [pageName]="'Зміна груп'">
   <mat-card>
-    <mat-card-title>Зміна груп</mat-card-title>
     <mat-card-content>
       <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
         <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
@@ -16,7 +15,7 @@
             <mat-label>Нова група...</mat-label>
             <input matInput #itemValue placeholder="Напр. ТТП-3">
           </mat-form-field>
-          <button mat-button (click)="saveNode(node, itemValue.value)">Save</button>
+          <button mat-button (click)="saveNode(node, itemValue.value)">Зберегти</button>
         </mat-tree-node>
 
         <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>

@@ -2,6 +2,6 @@
   margin-right: 4px;
 }
 
-.mat-checkbox-layout {
+::ng-deep .mat-checkbox-layout {
   margin-bottom: 0 !important; /*Bootstrap*/
 }
