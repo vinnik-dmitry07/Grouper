@@ -1,8 +1,27 @@
+<ng-template #joinGroupDialogTemplate>
+  <h1 mat-dialog-title>Привіт</h1>
+  <div mat-dialog-content>
+    <p>Введи ідентифікатор групи:</p>
+    <mat-form-field>
+      <mat-label>Ідентифікатор</mat-label>
+      <input matInput #idInput>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="joinGroup(idInput.value)">Додати</button>
+    <button mat-button (click)="cancelJoin()">Скасувати</button>
+  </div>
+</ng-template>
+
 <app-navigation [pageName]="'Групи'">
   <div nav-buttons>
-    <button mat-icon-button aria-label="Приєднатися" (click)="openDialog()">
+    <button mat-icon-button [matMenuTriggerFor]="addGroupMenu" dir="rtl">
       <mat-icon>group_add</mat-icon>
     </button>
+    <mat-menu #addGroupMenu="matMenu">
+      <button mat-menu-item (click)="createGroup()">Створити групу</button>
+      <button mat-menu-item (click)="openJoinDialog()">Приєднатися до групи</button>
+    </mat-menu>
   </div>
   <app-group-card *ngFor="let g of groups" [group]="g"></app-group-card>
 </app-navigation>

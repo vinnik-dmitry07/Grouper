@@ -1,5 +1,10 @@
+form {
+  padding: 20vh 0;
+  height: 100%;
+}
+
 mat-card {
-  margin: 10px auto;
+  margin: 0 auto;
   min-width: 150px;
   max-width: 500px;
   width: 100%;

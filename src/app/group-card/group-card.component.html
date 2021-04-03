@@ -5,7 +5,7 @@
 
     <mat-card-title [style]="group.editing ? 'box-shadow: 0 0 0 1px black; border-radius: 1px;' : null">
       <input *ngIf="group.editing" value="{{group.name}}">
-      <a *ngIf="!group.editing" routerLink="/posts">{{group.name}}</a>
+      <span *ngIf="!group.editing">{{group.name}}</span>
     </mat-card-title>
     <mat-card-subtitle>{{group.teacher}}</mat-card-subtitle>
 
@@ -15,12 +15,16 @@
 
     <mat-menu #menu="matMenu">
       <button mat-menu-item>
-        <mat-icon>dialpad</mat-icon>
+        <mat-icon>cancel</mat-icon>
         <span>Скасувати реєстрацію</span>
       </button>
       <button mat-menu-item (click)="group.editing = true">
         <mat-icon>edit</mat-icon>
         <span>Редагувати</span>
+      </button>
+      <button mat-menu-item (click)="copyToClipboard(group.identificator)">
+        <mat-icon>link</mat-icon>
+        <span>Скопіювати посилання</span>
       </button>
     </mat-menu>
   </mat-card-header>
@@ -29,13 +33,12 @@
     <mat-label>Опис:</mat-label>
     <p [contentEditable]="group.editing === true">{{group.description}}</p>
   </mat-card-content>
-  <mat-card-content *ngIf="group.useful">
+  <mat-card-content *ngIf="group.usefulContent">
     <mat-label>Корисне:</mat-label>
-    <p [contentEditable]="group.editing === true" [innerHTML]="group.useful | linkify"></p>
+    <p [contentEditable]="group.editing === true" [innerHTML]="group.usefulContent | linkify"></p>
   </mat-card-content>
   <mat-card-actions>
-    <input style="display: none" #copyInput value="{{group.link}}">
     <button *ngIf="group.editing" mat-flat-button color="accent" (click)="group.editing = false">Зберегти</button>
-    <button mat-flat-button color="primary" (click)="copyToClipboard(copyInput)">Посилання</button>
+    <button mat-flat-button color="primary" [routerLink]="'/posts/' + group.id">Відкрити</button>
   </mat-card-actions>
 </mat-card>

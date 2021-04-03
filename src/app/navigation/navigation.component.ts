@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from '../shared/services/user.service';
 import {Router} from '@angular/router';
+import {UserModel} from '../shared/models';
 
 @Component({
   selector: 'app-navigation',
@@ -16,21 +17,22 @@ export class NavigationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.userService.isLogged()) {
+    if (this.userService.hasToken()) {
       this.userService.loadUser().subscribe(
-        (data: any) => {
-          this.email = data.email;
+        (user: UserModel) => {
+          this.email = user.email;
         },
         error => {
           // alert(error);
-          console.log(error);
+          this.userService.removeToken();
+          this.router.navigateByUrl('/signin');
         }
       );
     }
   }
 
   logOut(): void {
-    this.userService.logOut();
+    this.userService.removeToken();
     this.router.navigateByUrl('/');
   }
 }

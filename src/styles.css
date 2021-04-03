@@ -11,3 +11,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   overflow-wrap: break-word;
   display: inline;
 }
+
+.mat-raised-button:first-child {
+  margin-right: 8px !important;
+}

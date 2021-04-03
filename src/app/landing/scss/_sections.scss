@@ -120,7 +120,6 @@
     font-family: 'Karla', sans-serif;
     font-size: 16px;
     font-weight: 400;
-    letter-spacing: -1px;
     margin: 0 14px;
     @include large-desktops {
       margin: 0 17px;
@@ -142,7 +141,6 @@
       font-family: 'Karla', sans-serif;
       font-size: 16px;
       font-weight: 400;
-      letter-spacing: -1px;
     }
   }
 }
@@ -276,7 +274,7 @@
       margin-bottom: 19px;
       color: #1f1f1f;
       font-weight: 700;
-      letter-spacing: -4px;
+      letter-spacing: -2px;
       font-size: 45px;
       line-height: 50px;
       margin-bottom: 24px;

@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {BaseResponse} from '../shared/models/base-response';
-import {UserModel} from '../shared/models/user';
+import {BaseResponse, UserModel} from '../shared/models';
 import {UserService} from '../shared/services/user.service';
 import {Router} from '@angular/router';
 
@@ -39,7 +38,6 @@ export class SignupFormComponent implements OnInit {
         this.router.navigateByUrl('/signin');
       },
       error => {
-        alert(error);
         console.log(error);
       }
     );

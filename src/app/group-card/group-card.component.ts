@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 import GeoPattern from 'geopattern';
-import {Group} from '../shared/models/group';
+import {GroupModel} from '../shared/models';
 
 @Component({
   selector: 'app-group-card',
@@ -12,16 +12,21 @@ export class GroupCardComponent implements OnInit {
   imageURL: string;
 
   @Input()
-  group: Group;
+  group: GroupModel;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
     this.imageURL = GeoPattern.generate(this.group.name).toDataUrl();
   }
 
-  copyToClipboard(copyInput): void {
-    copyInput.select();
-    document.execCommand('copy');
+  copyToClipboard(id: string): void {
+    navigator.clipboard.writeText(id).then(() => {
+        console.log('Successful copy.');
+      },
+      () => {
+        console.log('Cannot copy!');
+      });
   }
 }

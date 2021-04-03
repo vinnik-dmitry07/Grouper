@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: 'groups', component: GroupsComponent},
   {path: 'signup', component: SignupFormComponent},
   {path: 'signin', component: SigninFormComponent},
-  {path: 'posts', component: PostsComponent},
+  {path: 'posts/:group-id', component: PostsComponent},
   {path: 'change-groups', component: GroupsChangeComponent},
   // { path: '**', component: PageNotFoundComponent },
 ];

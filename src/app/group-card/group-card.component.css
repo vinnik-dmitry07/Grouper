@@ -17,11 +17,11 @@ mat-card-title {
   text-overflow: ellipsis;
 }
 
-mat-card-title > a, mat-card-title > input {
+mat-card-title > span, mat-card-title > input {
   font-weight: 500;
 }
 
-mat-card-title > a {
+mat-card-title > span {
   display: inline;
   max-width: 100%;
   color: rgba(0, 0, 0, 0.87);

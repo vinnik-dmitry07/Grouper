@@ -33,8 +33,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatTreeModule} from '@angular/material/tree';
 import {GroupsChangeComponent} from './groups-change/groups-change.component';
 import {NgxLinkifyjsModule} from 'ngx-linkifyjs';
-import {GroupIdDialogComponent} from './group-id-dialog/group-id-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {GroupService} from './shared/services/group.service';
+import {PostService} from './shared/services/post.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,6 @@ import {MatDialogModule} from '@angular/material/dialog';
     PostsComponent,
     LandingComponent,
     GroupsChangeComponent,
-    GroupIdDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,7 +77,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatDialogModule,
   ],
   providers: [
-    UserService
+    UserService,
+    GroupService,
+    PostService,
   ],
   bootstrap: [AppComponent],
 })

@@ -2,10 +2,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {environment} from 'src/environments/environment';
-import {BaseResponse} from '../models/base-response';
-import {UserModel} from '../models/user';
-
-const TOKEN = 'TOKEN';
+import {BaseResponse, UserModel} from '../models';
 
 @Injectable()
 export class UserService {
@@ -13,7 +10,7 @@ export class UserService {
   }
 
   signUp(user: UserModel): Observable<BaseResponse> {
-    const url = environment.userURLs.signUp;
+    const url = environment.host + '/api/User/sign-up';
 
     const body = {
       firstName: user.firstName,
@@ -32,7 +29,7 @@ export class UserService {
   }
 
   signIn(user: UserModel): Observable<BaseResponse> {
-    const url = environment.userURLs.signIn;
+    const url = environment.host + '/api/User/sign-in';
 
     const body = {
       email: user.email,
@@ -47,24 +44,24 @@ export class UserService {
     return this.http.post<BaseResponse>(url, body, options);
   }
 
-  logOut(): void {
-    localStorage.removeItem(TOKEN);
+  removeToken(): void {
+    localStorage.removeItem(environment.tokenKey);
   }
 
   setToken(token: string): void {
-    localStorage.setItem(TOKEN, token);
+    localStorage.setItem(environment.tokenKey, token);
   }
 
-  isLogged(): boolean {
-    return localStorage.getItem(TOKEN) != null;
+  hasToken(): boolean {
+    return localStorage.getItem(environment.tokenKey) != null;
   }
 
   loadUser(): Observable<UserModel> {
-    const url = environment.userURLs.userInfo;
+    const url = environment.host + '/api/User/user-info';
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + localStorage.getItem(TOKEN)
+      Authorization: 'Bearer ' + localStorage.getItem(environment.tokenKey)
     });
     const options = {headers};
 

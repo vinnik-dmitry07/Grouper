@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {UserModel} from '../shared/models/user';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {BaseResponse, UserModel} from '../shared/models';
 import {UserService} from '../shared/services/user.service';
-import {BaseResponse} from '../shared/models/base-response';
 import {Router} from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-signin-form',
@@ -10,14 +10,16 @@ import {Router} from '@angular/router';
   styleUrls: ['./signin-form.component.css', '../shared/form-styles.css']
 })
 export class SigninFormComponent implements OnInit {
+  @ViewChild('errorDialog') errorDialog: TemplateRef<any>;
+
   user: UserModel;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private dialog: MatDialog) { }
 
   submitted = false;
 
   ngOnInit(): void {
-    if (this.userService.isLogged()) {
+    if (this.userService.hasToken()) {
       this.router.navigateByUrl('/groups');
     }
     this.user = new UserModel();
@@ -34,8 +36,7 @@ export class SigninFormComponent implements OnInit {
         }
       },
       error => {
-        alert(error);
-        console.log(error);
+        this.dialog.open(this.errorDialog);
       }
     );
   }
