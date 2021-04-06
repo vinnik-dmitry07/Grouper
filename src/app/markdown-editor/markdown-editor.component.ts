@@ -1,5 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {DomSanitizer} from '@angular/platform-browser';
+import {Component, Input, OnInit} from '@angular/core';
 import {MdEditorOption, UploadResult} from 'ngx-markdown-editor';
 
 @Component({
@@ -9,13 +8,15 @@ import {MdEditorOption, UploadResult} from 'ngx-markdown-editor';
 })
 
 export class MarkdownEditorComponent implements OnInit {
+  static defaultContent = MarkdownEditorComponent.initDefaultContent();
+
   public options: MdEditorOption = {
     showPreviewPanel: true,
     enablePreviewContentClick: true,
     resizable: false,
     customRender: {
       image(href: string, title: string, text: string): string {
-        let out = `<img style="max-width: 100%; border: 20px solid red;" src="${href}" alt="${text}"`;
+        let out = `<img style="max-width: 100%;" src="${href}" alt="${text}"`;
         if (title) {
           out += ` title="${title}"`;
         }
@@ -27,34 +28,42 @@ export class MarkdownEditorComponent implements OnInit {
       sanitize: true
     }
   };
-  public content: string;
-  public mode = 'editor';
 
-  constructor(private domSanitizer: DomSanitizer) {
-    this.preRender = this.preRender.bind(this);
-    this.postRender = this.postRender.bind(this);
+  @Input()
+  public content;
+
+  @Input()
+  public mode;
+
+  constructor() {
   }
 
-  ngOnInit(): void {
-    const contentArr = ['# Hello, Markdown Editor!'];
+  static initDefaultContent(): string {
+    const contentArr = ['# Приклад заголовку'];
     contentArr.push('```javascript ');
+    contentArr.push('// Приклад коду');
     contentArr.push('function Test() {');
     contentArr.push('	console.log("Test");');
     contentArr.push('}');
     contentArr.push('```');
-    contentArr.push(' Name | Type');
+    contentArr.push(' Приклад | Таблиці');
     contentArr.push(' ---- | ----');
-    contentArr.push(' A | Test');
-    contentArr.push('![](http://lon-yang.github.io/markdown-editor/favicon.ico)');
+    contentArr.push(' *Курсив* | **Жирний**');
+    contentArr.push('![Приклад зображення](http://csc.knu.ua/media/departments/c373f20b-a959-4c20-aaa3-b50989fb8858.png)');
     contentArr.push('');
-    contentArr.push('- [ ] Taks A');
-    contentArr.push('- [x] Taks B');
-    contentArr.push('- test');
+    contentArr.push('- [ ] Приклад');
+    contentArr.push('- [x] Списку');
+    contentArr.push('- Тест');
     contentArr.push('');
-    contentArr.push('[Link](https://www.google.com)');
-    contentArr.push(`<img src="1" onerror="alert(1)" />`);
+    contentArr.push('[Приклад посилання](https://www.google.com)');
     contentArr.push('');
-    this.content = contentArr.join('\r\n');
+    return contentArr.join('\r\n');
+  }
+
+  ngOnInit(): void {
+    if (!this.content) {
+      this.content = MarkdownEditorComponent.defaultContent;
+    }
   }
 
   doUpload(files: Array<File>): Promise<Array<UploadResult>> {
@@ -75,7 +84,7 @@ export class MarkdownEditorComponent implements OnInit {
   }
 
   onEditorLoaded(editor): void {
-    console.log(`ACE Editor Ins: `, editor);
+    // console.log(`ACE Editor Ins: `, editor);
     // editor.setOption('showLineNumbers', false);
 
     // setTimeout(() => {
@@ -84,7 +93,7 @@ export class MarkdownEditorComponent implements OnInit {
   }
 
   preRender(mdContent): string {
-    console.log(`preRender fired`);
+    // console.log(`preRender fired`);
     // return new Promise((resolve) => {
     //   setTimeout(() => {
     //     resolve(mdContent);
@@ -94,13 +103,13 @@ export class MarkdownEditorComponent implements OnInit {
   }
 
   postRender(html): string {
-    console.log(`postRender fired`);
+    // console.log(`postRender fired`);
     // return '<h1>Test</h1>';
     return html;
   }
 
   onPreviewDomChanged(dom: HTMLElement): void {
-    console.log(`onPreviewDomChanged fired`);
+    // console.log(`onPreviewDomChanged fired`);
     // console.log(dom);
     // console.log(dom.innerHTML)
   }

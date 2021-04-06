@@ -17,11 +17,11 @@ mat-card-title {
   text-overflow: ellipsis;
 }
 
-mat-card-title > span, mat-card-title > input {
+mat-card-title > a, mat-card-title > input {
   font-weight: 500;
 }
 
-mat-card-title > span {
+mat-card-title > a {
   display: inline;
   max-width: 100%;
   color: rgba(0, 0, 0, 0.87);
@@ -31,8 +31,16 @@ mat-card-actions > button {
   margin-right: 10px;
 }
 
+mat-card-content p {
+  word-break: break-all;
+}
+
 mat-card-content:last-of-type {
-  /*margin-bottom: 0;*/
+  margin-bottom: 0;
+}
+
+mat-card-actions {
+  margin-top: 16px;
 }
 
 mat-card {
@@ -45,6 +53,7 @@ mat-card {
 
 .fill-image {
   flex-grow: 1;
+  background-size: 192px;
 }
 
 :host {

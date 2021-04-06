@@ -1,7 +1,8 @@
-<md-editor #md="ngModel" name="Content" (onEditorLoaded)="onEditorLoaded($event)"
-           [preRender]="preRender" [postRender]="postRender"
-           (onPreviewDomChanged)="onPreviewDomChanged($event)"
-           [upload]="doUpload" [(ngModel)]="content" [mode]="mode" [options]="options" required maxlength="600" height="400px"></md-editor>
+<md-editor #md="ngModel" (onEditorLoaded)="onEditorLoaded($event)" (onPreviewDomChanged)="onPreviewDomChanged($event)"
+           [(ngModel)]="content" [mode]="mode"
+           [options]="options"
+           [postRender]="postRender" [preRender]="preRender" [upload]="doUpload" height="400px" maxlength="600" name="Content"
+           required></md-editor>
 <!--<br>-->
 <!--<div class="well well-sm">-->
 <!--  <label class="control-label">Form validate:</label>-->

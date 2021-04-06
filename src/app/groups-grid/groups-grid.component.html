@@ -1,0 +1,16 @@
+<ng-template #joinGroupDialogTemplate>
+  <h1 mat-dialog-title>Привіт</h1>
+  <div mat-dialog-content>
+    <p>Введи ідентифікатор групи:</p>
+    <mat-form-field>
+      <mat-label>Ідентифікатор</mat-label>
+      <input #idInput matInput>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button (click)="joinGroup(idInput)" mat-button>Додати</button>
+    <button (click)="cancelJoin()" mat-button>Закінчити</button>
+  </div>
+</ng-template>
+
+<app-group-card (deleteGroupCard)="deleteGroupCard($event)" *ngFor="let g of groups" [group]="g" [user]="user"></app-group-card>

@@ -1,0 +1,82 @@
+<form #signupForm="ngForm" (ngSubmit)="onSubmit()" appEqualPasswords>
+  <mat-card>
+    <mat-card-title>Реєстрація</mat-card-title>
+    <mat-card-content>
+      <p>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Ім'я</mat-label>
+          <input #firstName="ngModel" [(ngModel)]="user.firstName" matInput name="first-name" required>
+          <mat-error *ngIf="signupForm.controls['first-name']?.errors?.required">
+            Необхідно ім'я
+          </mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Прізвище</mat-label>
+          <input #lastName="ngModel" [(ngModel)]="user.lastName" matInput name="last-name" required>
+          <mat-error *ngIf="signupForm.controls['last-name']?.errors?.required">
+            Необхідно прізвище
+          </mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Пошта</mat-label>
+          <input #email="ngModel" [(ngModel)]="user.email" matInput name="email" required>
+          <mat-error *ngIf="signupForm.controls['email']?.errors?.required">
+            Необхідна пошта
+          </mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Пароль</mat-label>
+          <input #password="ngModel" [(ngModel)]="user.password" matInput name="password" required type="password">
+          <mat-hint>Букви, цифри</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Підтвердження паролю</mat-label>
+          <input #passwordConfirm="ngModel" [(ngModel)]="user.passwordConfirm" matInput minlength="3" name="password-confirm"
+                 required type="password">
+          <mat-error *ngIf="signupForm.controls['password-confirm']?.errors?.required">
+            Пароль де
+          </mat-error>
+
+          <mat-error *ngIf="signupForm.controls['password-confirm']?.errors?.minlength">
+            Довжина де
+          </mat-error>
+          <div *ngIf="signupForm.errors?.identityRevealed" class="cross-validation-error-message alert alert-danger">
+            Паролі мусять співпадати
+          </div>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Роль</mat-label>
+          <mat-select #role="ngModel" [(ngModel)]="user.role" name="password" required>
+            <mat-option *ngFor="let role of roles" [value]="role.value">
+              {{role.label}}
+            </mat-option>
+            <mat-error *ngIf="signupForm.controls['role']?.errors?.required">
+              Виберіть роль
+            </mat-error>
+          </mat-select>
+        </mat-form-field>
+      </p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button [disabled]="signupForm.invalid" color="primary" mat-raised-button type="submit">Зареєструватися</button>
+      <button mat-raised-button routerLink="/signin">Увійти</button>
+      <button mat-raised-button routerLink="/">Головна</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

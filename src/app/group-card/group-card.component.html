@@ -1,44 +1,51 @@
-<mat-card>
+<mat-card #scrollToEl>
   <mat-card-header>
-    <div mat-card-avatar [ngStyle]="{'background-image': 'url(' + group.iconURL + ')'}"
-         class="header-image"></div>
+    <div [ngStyle]="{'background-image': 'url(' +
+        (group.iconURL ? group.iconURL : 'https://i1.sndcdn.com/avatars-000119157565-4ir7vb-t240x240.jpg') + ')'}" class="header-image"
+         mat-card-avatar></div>
 
     <mat-card-title [style]="group.editing ? 'box-shadow: 0 0 0 1px black; border-radius: 1px;' : null">
-      <input *ngIf="group.editing" value="{{group.name}}">
-      <span *ngIf="!group.editing">{{group.name}}</span>
+      <input (input)="group.name = $event.target.value" *ngIf="group.editing" value="{{group.name}}">
+      <a *ngIf="!group.editing" [routerLink]="'/posts/' + group.id">{{group.name}}</a>
     </mat-card-title>
-    <mat-card-subtitle>{{group.teacher}}</mat-card-subtitle>
+    <mat-card-subtitle>{{group.creator.lastName + ' ' + group.creator.firstName}}</mat-card-subtitle>
 
-    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" mat-icon-button>
       <mat-icon>more_vert</mat-icon>
     </button>
 
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
+      <button (click)="leaveGroup()" mat-menu-item>
         <mat-icon>cancel</mat-icon>
         <span>Скасувати реєстрацію</span>
       </button>
-      <button mat-menu-item (click)="group.editing = true">
+      <button (click)="group.editing = true" mat-menu-item>
         <mat-icon>edit</mat-icon>
         <span>Редагувати</span>
       </button>
-      <button mat-menu-item (click)="copyToClipboard(group.identificator)">
+      <button *ngIf="user.role === 'teacher'" (click)="deleteGroup()" mat-menu-item>
+        <mat-icon>delete</mat-icon>
+        <span>Видалити</span>
+      </button>
+      <button (click)="copyToClipboard(group.identificator)" mat-menu-item>
         <mat-icon>link</mat-icon>
-        <span>Скопіювати посилання</span>
+        <span>Скопіювати ідентифікатор</span>
       </button>
     </mat-menu>
   </mat-card-header>
-  <mat-card-content class="fill-image" [ngStyle]="{'background': imageURL}"></mat-card-content>
-  <mat-card-content *ngIf="group.description">
+  <mat-card-content [ngStyle]="{'background-image': generateBackground(group.name)}"
+                    class="fill-image"></mat-card-content>
+  <mat-card-content *ngIf="group.description || group.editing">
     <mat-label>Опис:</mat-label>
-    <p [contentEditable]="group.editing === true">{{group.description}}</p>
+    <p (input)="newGroup.description = $event.target.innerHTML" [contentEditable]="group.editing === true"
+       [innerHTML]="group.description"></p>
   </mat-card-content>
-  <mat-card-content *ngIf="group.usefulContent">
+  <mat-card-content *ngIf="group.usefulContent || group.editing">
     <mat-label>Корисне:</mat-label>
-    <p [contentEditable]="group.editing === true" [innerHTML]="group.usefulContent | linkify"></p>
+    <p (input)="newGroup.usefulContent = $event.target.innerHTML" [contentEditable]="group.editing === true"
+       [innerHTML]="group.usefulContent | linkify"></p>
   </mat-card-content>
-  <mat-card-actions>
-    <button *ngIf="group.editing" mat-flat-button color="accent" (click)="group.editing = false">Зберегти</button>
-    <button mat-flat-button color="primary" [routerLink]="'/posts/' + group.id">Відкрити</button>
+  <mat-card-actions *ngIf="group.editing">
+    <button (click)="editGroup()" color="accent" mat-flat-button>Зберегти</button>
   </mat-card-actions>
 </mat-card>

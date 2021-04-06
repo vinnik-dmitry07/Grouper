@@ -6,22 +6,20 @@
         Пост
       </mat-panel-title>
 
-      <mat-panel-description>
-          Завдання з програмування
-      </mat-panel-description>
+      <mat-panel-description>{{post.caption}}</mat-panel-description>
 
-      <span style="margin-right: 16px; width: 30px">{{mark}}</span>
+      <span style="margin-right: 16px; width: 30px">{{'10/10'}}</span>
     </mat-expansion-panel-header>
     <div style="padding: 10px 0">
       <mat-label>Опис:</mat-label>
 
-      <div>Написати classroom.</div>
+      <app-markdown-editor [content]="post.description" [mode]="'preview'"></app-markdown-editor>
     </div>
-    <form>
+    <div>
       <mat-label>Відповідь:</mat-label>
-      <app-markdown-editor></app-markdown-editor>
-      <button mat-raised-button color="primary" type="submit" [disabled]="done">Оновити відповідь</button>
-    </form>
+      <app-markdown-editor #answerEditor (input)="form.content = answerEditor.content" [content]="form?.content"
+                           [mode]="'editor'"></app-markdown-editor>
+      <button (click)="updateAnswer()" [disabled]="done" color="primary" mat-raised-button>Оновити відповідь</button>
+    </div>
   </mat-expansion-panel>
 </p>
-

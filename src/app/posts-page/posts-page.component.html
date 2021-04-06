@@ -1,0 +1,10 @@
+<app-navigation #userNavigationComponent *ngIf="group" [pageName]="'Пости: &quot;' + group.name + '&quot;'">
+  <div nav-buttons-left>
+    <button (click)="backClicked()" mat-icon-button>
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </div>
+
+  <app-posts-list *ngIf="userNavigationComponent.user" [group]="group"
+                  [user]="userNavigationComponent.user"></app-posts-list>
+</app-navigation>

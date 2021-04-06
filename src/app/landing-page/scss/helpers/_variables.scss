@@ -1,0 +1,6 @@
+@import '../../../../../node_modules/@angular/material/theming';
+
+$primary-color: mat-color(mat-palette($mat-indigo));
+$primary-color-hue: mat-color(mat-palette($mat-indigo), 'A100');
+$primary-color-2: mat-color(mat-palette($mat-pink));
+$primary-color-2-hue: mat-color(mat-palette($mat-pink), 50);

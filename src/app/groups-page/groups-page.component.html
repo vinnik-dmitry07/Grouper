@@ -1,0 +1,16 @@
+<app-navigation #userNavigationComponent [pageName]="'Групи'">
+  <app-groups-grid #groupsGridComponent *ngIf="userNavigationComponent.user"
+                   [user]="userNavigationComponent.user"></app-groups-grid>
+
+  <div nav-buttons-right>
+    <button [matMenuTriggerFor]="addGroupMenu" dir="rtl" mat-icon-button>
+      <mat-icon>group_add</mat-icon>
+    </button>
+    <mat-menu #addGroupMenu="matMenu">
+      <button (click)="groupsGridComponent.createGroup()"
+              *ngIf="userNavigationComponent.user?.role === 'teacher'" mat-menu-item>Створити групу
+      </button>
+      <button (click)="groupsGridComponent.openJoinDialog()" mat-menu-item>Приєднатися до групи</button>
+    </mat-menu>
+  </div>
+</app-navigation>

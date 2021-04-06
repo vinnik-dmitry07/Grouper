@@ -1,0 +1,22 @@
+<div class="container">
+  <p>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header [collapsedHeight]="'48px'" [expandedHeight]="'48px'">
+        <mat-panel-title>
+          <button mat-icon-button>
+            <mat-icon>create</mat-icon>
+          </button>
+
+          <span>Створити пост</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div>
+        <app-markdown-editor #markdownEditorComponent></app-markdown-editor>
+        <button (click)="onSubmit()" color="primary" mat-raised-button>Опублікувати</button>
+      </div>
+    </mat-expansion-panel>
+  </p>
+
+  <app-post *ngFor="let p of posts" [post]="p" [user]="user"></app-post>
+</div>

@@ -14,43 +14,49 @@ import {MatListModule} from '@angular/material/list';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LMarkdownEditorModule} from 'ngx-markdown-editor';
 import {MarkdownEditorComponent} from './markdown-editor/markdown-editor.component';
-import {SignupFormComponent} from './signup-form/signup-form.component';
+import {SignupPageComponent} from './signup-page/signup-page.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {EqualPasswordsValidatorDirective} from './shared/equal-passwords.directive';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {PostComponent} from './post/post.component';
-import {SigninFormComponent} from './signin-form/signin-form.component';
+import {SigninPageComponent} from './signin-page/signin-page.component';
 import {AppRoutingModule} from './app-routing.module';
 import {UserService} from './shared/services/user.service';
-import {HttpClientModule} from '@angular/common/http';
-import {GroupsComponent} from './groups/groups.component';
-import {NavigationComponent} from './navigation/navigation.component';
-import {PostsComponent} from './posts/posts.component';
-import {LandingComponent} from './landing/landing.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {UserNavigationComponent} from './user-navigation/user-navigation.component';
+import {LandingPageComponent} from './landing-page/landing-page.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatTreeModule} from '@angular/material/tree';
-import {GroupsChangeComponent} from './groups-change/groups-change.component';
+import {GroupsTreePageComponent} from './groups-tree-page/groups-tree-page.component';
 import {NgxLinkifyjsModule} from 'ngx-linkifyjs';
 import {MatDialogModule} from '@angular/material/dialog';
 import {GroupService} from './shared/services/group.service';
 import {PostService} from './shared/services/post.service';
+import {GroupsPageComponent} from './groups-page/groups-page.component';
+import {PostsPageComponent} from './posts-page/posts-page.component';
+import {TokenInterceptor} from './http-interceptors/token-interceptor';
+import {FormService} from './shared/services/form.service';
+import {GroupsGridComponent} from './groups-grid/groups-grid.component';
+import {PostsListComponent} from './posts-list/posts-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GroupCardComponent,
     MarkdownEditorComponent,
-    SignupFormComponent,
+    SignupPageComponent,
     EqualPasswordsValidatorDirective,
     PostComponent,
-    SigninFormComponent,
-    GroupsComponent,
-    NavigationComponent,
-    PostsComponent,
-    LandingComponent,
-    GroupsChangeComponent,
+    SigninPageComponent,
+    UserNavigationComponent,
+    GroupsGridComponent,
+    PostsListComponent,
+    LandingPageComponent,
+    GroupsTreePageComponent,
+    GroupsPageComponent,
+    PostsPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,6 +86,12 @@ import {PostService} from './shared/services/post.service';
     UserService,
     GroupService,
     PostService,
+    FormService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    }
   ],
   bootstrap: [AppComponent],
 })

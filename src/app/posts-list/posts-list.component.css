@@ -1,0 +1,18 @@
+.container {
+  margin: 10px auto;
+  max-width: 62.5rem;
+  width: calc(100% - 2 * 1.5rem);
+  overflow: auto;
+}
+
+p {
+  padding: 0 20px;
+}
+
+mat-panel-title {
+  align-items: center;
+}
+
+mat-panel-title span {
+  margin-left: 8px;
+}

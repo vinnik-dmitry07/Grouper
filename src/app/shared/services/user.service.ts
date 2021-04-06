@@ -1,4 +1,4 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {environment} from 'src/environments/environment';
@@ -11,37 +11,14 @@ export class UserService {
 
   signUp(user: UserModel): Observable<BaseResponse> {
     const url = environment.host + '/api/User/sign-up';
-
-    const body = {
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      password: user.password,
-      role: user.role
-    };
-
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
-    const options = {headers};
-
-    return this.http.post<BaseResponse>(url, body, options);
+    const body = user;
+    return this.http.post<BaseResponse>(url, body);
   }
 
   signIn(user: UserModel): Observable<BaseResponse> {
     const url = environment.host + '/api/User/sign-in';
-
-    const body = {
-      email: user.email,
-      password: user.password,
-    };
-
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
-    const options = {headers};
-
-    return this.http.post<BaseResponse>(url, body, options);
+    const body = user;
+    return this.http.post<BaseResponse>(url, body);
   }
 
   removeToken(): void {
@@ -58,13 +35,13 @@ export class UserService {
 
   loadUser(): Observable<UserModel> {
     const url = environment.host + '/api/User/user-info';
+    return this.http.get<UserModel>(url);
+  }
 
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + localStorage.getItem(environment.tokenKey)
-    });
-    const options = {headers};
-
-    return this.http.get<UserModel>(url, options);
+  leaveGroup(groupId: number): Observable<BaseResponse> {
+    const url = environment.host + '/api/User/leave-group';
+    const body = null;
+    const options = {params: new HttpParams().set('groupId', groupId.toString())};
+    return this.http.post<BaseResponse>(url, body, options);
   }
 }

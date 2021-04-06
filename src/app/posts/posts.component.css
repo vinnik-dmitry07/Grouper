@@ -1,6 +1,0 @@
-.container {
-  margin: 10px auto;
-  max-width: 62.5rem;
-  width: calc(100% - 2*1.5rem);
-  overflow: auto;
-}

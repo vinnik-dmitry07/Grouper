@@ -3,20 +3,20 @@ export class BaseResponse {
 }
 
 export class UserModel {
-  id: number;
+  id: string;
   firstName: string;
   lastName: string;
   email: string;
   role: string;
   password: string;
   passwordConfirm: string;
+
+  public constructor(init?: Partial<UserModel>) {
+    Object.assign(this, init);
+  }
 }
 
 export class GroupModel {
-  public constructor(init?: Partial<GroupModel>) {
-    Object.assign(this, init);
-  }
-
   id: number;
   name: string;
   identificator: string;
@@ -27,8 +27,13 @@ export class GroupModel {
   usefulContent: string;
   parentGroupId: number;
   iconURL: string;
-  teacher: string;
+  creatorId: number;
+  creator: UserModel;
   editing: boolean;
+
+  public constructor(init?: Partial<GroupModel>) {
+    Object.assign(this, init);
+  }
 }
 
 export class FormModel {
