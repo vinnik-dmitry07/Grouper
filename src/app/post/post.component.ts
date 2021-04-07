@@ -44,7 +44,7 @@ export class PostComponent implements OnInit {
             for (const user of group.participants.filter(u1 => !post.acknowledgeUsers.map(u => u.id).includes(u1.id))) {
               this.data.push({
                 name: user.lastName + ' ' + user.firstName,
-                content: null,
+                content: 'Відповіді немає',
                 value: 0,
               });
             }
@@ -55,7 +55,7 @@ export class PostComponent implements OnInit {
               ) {
               this.data.push({
                 name: user.lastName + ' ' + user.firstName,
-                content: null,
+                content: 'Відповіді немає',
                 value: 50,
               });
             }

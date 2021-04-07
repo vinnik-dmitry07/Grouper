@@ -14,8 +14,8 @@
     <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
       <div class="example-element-detail"
            [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-        <div class="example-element-description">
-          <app-markdown-editor style="width: 100%" [content]="element.content" [mode]="'preview'"></app-markdown-editor>
+        <div class="example-element-description" style="width: 100%">
+          <app-markdown-editor [content]="element.content" [mode]="'preview'"></app-markdown-editor>
         </div>
       </div>
     </td>
