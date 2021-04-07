@@ -67,10 +67,6 @@ export class GroupsGridComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.displayGroups();
-  }
-
-  displayGroups(): void {
     this.groupService.loadGroups(this.user.id).subscribe(
       (groups: GroupModel[]) => {
         console.log(groups);

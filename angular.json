@@ -34,6 +34,7 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/font-awesome/css/font-awesome.min.css",
               "node_modules/ngx-markdown-editor/assets/highlight.js/agate.min.css",
+              "node_modules/@circlon/angular-tree-component/css/angular-tree-component.css",
               "src/theme.scss"
             ],
             "scripts": [

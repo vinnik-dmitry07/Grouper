@@ -69,3 +69,9 @@ export class PostModel {
   groupId: number;
   acknowledgeUsers: UserModel[];
 }
+
+export class TreeNode {
+  id: number;
+  name: string;
+  children: TreeNode[];
+}

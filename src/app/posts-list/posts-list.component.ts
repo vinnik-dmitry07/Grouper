@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {PostService} from '../shared/services/post.service';
 import {GroupModel, PostModel, UserModel} from '../shared/models';
 import {MarkdownEditorComponent} from '../markdown-editor/markdown-editor.component';
@@ -16,6 +16,9 @@ export class PostsListComponent implements OnInit {
 
   @ViewChild('markdownEditorComponent')
   markdownEditorComponent: MarkdownEditorComponent;
+
+  @ViewChild('captionInput')
+  captionInput: ElementRef;
 
   @Input()
   user: UserModel;
@@ -40,7 +43,7 @@ export class PostsListComponent implements OnInit {
 
   onSubmit(): void {
     const newPost = new PostModel();
-    newPost.caption = 'todo';
+    newPost.caption = this.captionInput.nativeElement.value;
     newPost.groupId = this.group.id;
     newPost.description = this.markdownEditorComponent.content;
 

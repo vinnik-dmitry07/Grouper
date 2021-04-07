@@ -1,4 +1,4 @@
-<app-navigation #userNavigationComponent [pageName]="'Групи'">
+<app-user-navigation #userNavigationComponent [pageName]="'Групи'">
   <app-groups-grid #groupsGridComponent *ngIf="userNavigationComponent.user"
                    [user]="userNavigationComponent.user"></app-groups-grid>
 
@@ -13,4 +13,4 @@
       <button (click)="groupsGridComponent.openJoinDialog()" mat-menu-item>Приєднатися до групи</button>
     </mat-menu>
   </div>
-</app-navigation>
+</app-user-navigation>

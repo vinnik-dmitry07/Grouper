@@ -53,7 +53,7 @@ export class GroupCardComponent implements OnInit, AfterViewInit {
     this.group.editing = false;
     this.group.description = this.newGroup.description;
     this.group.usefulContent = this.newGroup.usefulContent;
-    this.groupService.editGroup(this.group).subscribe(
+    this.groupService.updateGroup(this.group).subscribe(
       data => console.log(data),
       error => console.log(error),
     );

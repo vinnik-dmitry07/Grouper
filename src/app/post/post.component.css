@@ -5,3 +5,13 @@ p {
 mat-expansion-panel mat-label {
   font-weight: 500;
 }
+
+::ng-deep .mat-expansion-indicator {
+  margin-top: -2px;
+}
+
+mat-expansion-panel-header span {
+  margin-right: 16px;
+  width: 60px;
+  text-align: right;
+}

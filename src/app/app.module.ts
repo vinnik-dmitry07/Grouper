@@ -40,6 +40,11 @@ import {TokenInterceptor} from './http-interceptors/token-interceptor';
 import {FormService} from './shared/services/form.service';
 import {GroupsGridComponent} from './groups-grid/groups-grid.component';
 import {PostsListComponent} from './posts-list/posts-list.component';
+import {TreeModule} from '@circlon/angular-tree-component';
+import { GroupsTreeComponent } from './groups-tree/groups-tree.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { ProgressTableComponent } from './progress-table/progress-table.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -57,6 +62,8 @@ import {PostsListComponent} from './posts-list/posts-list.component';
     GroupsTreePageComponent,
     GroupsPageComponent,
     PostsPageComponent,
+    GroupsTreeComponent,
+    ProgressTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,6 +88,9 @@ import {PostsListComponent} from './posts-list/posts-list.component';
     MatTreeModule,
     NgxLinkifyjsModule.forRoot(),
     MatDialogModule,
+    TreeModule,
+    MatProgressBarModule,
+    MatTableModule,
   ],
   providers: [
     UserService,

@@ -1,20 +1,28 @@
 <p>
   <mat-expansion-panel>
-    <mat-expansion-panel-header [collapsedHeight]="'48px'" [expandedHeight]="'48px'"
-                                [ngClass]="done ? 'accent-background' : ''">
+    <mat-expansion-panel-header [collapsedHeight]="'48px'" [expandedHeight]="'48px'">
+<!--    [ngClass]="done ? 'accent-background' : ''"-->
       <mat-panel-title>
         Пост
       </mat-panel-title>
 
       <mat-panel-description>{{post.caption}}</mat-panel-description>
 
-      <span style="margin-right: 16px; width: 30px">{{'10/10'}}</span>
+<!--      <span>{{'10/10'}}</span>-->
     </mat-expansion-panel-header>
+
     <div style="padding: 10px 0">
       <mat-label>Опис:</mat-label>
 
       <app-markdown-editor [content]="post.description" [mode]="'preview'"></app-markdown-editor>
     </div>
+
+    <div>
+      <mat-label>Відповіді:</mat-label>
+      <app-progress-table *ngIf="data.length > 0" [data]="data"></app-progress-table>
+      <br>
+    </div>
+
     <div>
       <mat-label>Відповідь:</mat-label>
       <app-markdown-editor #answerEditor (input)="form.content = answerEditor.content" [content]="form?.content"

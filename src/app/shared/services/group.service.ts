@@ -37,7 +37,7 @@ export class GroupService {
     return this.http.delete<BaseResponse>(url);
   }
 
-  editGroup(group: GroupModel): Observable<BaseResponse> {
+  updateGroup(group: GroupModel): Observable<BaseResponse> {
     const url = environment.host + '/api/Group/';
     const body = group;
     return this.http.put<BaseResponse>(url, body);

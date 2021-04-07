@@ -1,1 +1,6 @@
-<p>groups-tree-page works!</p>
+<app-user-navigation [pageName]="'Дерево груп'" #userNavigationComponent>
+  <div class="container">
+    <app-groups-tree *ngIf="userNavigationComponent.user" [user]="userNavigationComponent.user"></app-groups-tree>
+  </div>
+</app-user-navigation>
+

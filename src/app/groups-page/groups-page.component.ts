@@ -6,14 +6,7 @@ import {GroupsGridComponent} from '../groups-grid/groups-grid.component';
   templateUrl: './groups-page.component.html',
   styleUrls: ['./groups-page.component.css']
 })
-export class GroupsPageComponent implements OnInit {
+export class GroupsPageComponent {
   @ViewChild('groupsGridComponent')
   groupsGridComponent: GroupsGridComponent;
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
-
 }

@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {UserModel} from '../shared/models';
 
 @Component({
-  selector: 'app-navigation',
+  selector: 'app-user-navigation',
   templateUrl: './user-navigation.component.html',
   styleUrls: ['./user-navigation.component.css']
 })

@@ -1,12 +1,9 @@
-.container {
-  margin: 10px auto;
-  max-width: 62.5rem;
-  width: calc(100% - 2 * 1.5rem);
-  overflow: auto;
-}
-
 p {
   padding: 0 20px;
+}
+
+mat-expansion-panel mat-label {
+  font-weight: 500;
 }
 
 mat-panel-title {
@@ -15,4 +12,15 @@ mat-panel-title {
 
 mat-panel-title span {
   margin-left: 8px;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
+input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
+input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
+input:focus::-webkit-input-placeholder {
+  opacity: 0;
 }
