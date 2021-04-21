@@ -45,6 +45,8 @@ import { GroupsTreeComponent } from './groups-tree/groups-tree.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ProgressTableComponent } from './progress-table/progress-table.component';
 import {MatTableModule} from '@angular/material/table';
+import { SignalRCommentsService } from './shared/services/signal-r-comments.service';
+import { CommentComponent } from './post/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +66,7 @@ import {MatTableModule} from '@angular/material/table';
     PostsPageComponent,
     GroupsTreeComponent,
     ProgressTableComponent,
+    CommentComponent,
   ],
   imports: [
     BrowserModule,
@@ -97,6 +100,7 @@ import {MatTableModule} from '@angular/material/table';
     GroupService,
     PostService,
     FormService,
+    SignalRCommentsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

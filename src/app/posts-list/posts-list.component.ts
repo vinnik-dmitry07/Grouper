@@ -1,7 +1,8 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {PostService} from '../shared/services/post.service';
-import {GroupModel, PostModel, UserModel} from '../shared/models';
+import {CommentModel, GroupModel, PostModel, UserModel} from '../shared/models';
 import {MarkdownEditorComponent} from '../markdown-editor/markdown-editor.component';
+import { SignalRCommentsService } from '../shared/services/signal-r-comments.service';
 
 @Component({
   selector: 'app-posts-list',
@@ -23,11 +24,19 @@ export class PostsListComponent implements OnInit {
   @Input()
   user: UserModel;
 
-  constructor(private postService: PostService) {
+  constructor(private postService: PostService, private signalRService: SignalRCommentsService) {
   }
 
   ngOnInit(): void {
     this.loadPosts();
+
+    this.signalRService.startConnection();
+
+    this.signalRService.addCommentsListner((comment: CommentModel) => {
+      console.log("listner");
+      
+      this.posts.filter(x => x.id == comment.postId)[0].comments.push(comment);
+    });
   }
 
   loadPosts(): void {
@@ -52,4 +61,11 @@ export class PostsListComponent implements OnInit {
       error => console.log(error)
     );
   }
+
+  sendComment($event){
+    console.log($event);
+    
+
+    this.signalRService.sendComment($event);
+   }
 }

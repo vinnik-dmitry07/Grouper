@@ -40,4 +40,9 @@ export class SigninPageComponent implements OnInit {
       }
     );
   }
+
+  googleLogin($event): void{
+    $event.preventDefault();
+    this.userService.googleLogin();
+  }
 }

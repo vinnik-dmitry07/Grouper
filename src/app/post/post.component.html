@@ -29,5 +29,16 @@
                            [mode]="'editor'"></app-markdown-editor>
       <button (click)="updateAnswer()" [disabled]="done" color="primary" mat-raised-button>Оновити відповідь</button>
     </div>
+
+    <br>
+    <div>
+      <mat-label>Коментарі:</mat-label>
+      <app-comment *ngFor="let comment of post.comments" [comment]="comment"></app-comment>
+      <br>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Коментар" [(ngModel)]="newCommentInput">
+      </mat-form-field>
+      <button (click)="sendComment()" color="primary" mat-raised-button>Надіслати</button>
+    </div>
   </mat-expansion-panel>
 </p>

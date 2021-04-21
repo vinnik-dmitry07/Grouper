@@ -21,6 +21,13 @@ export class UserService {
     return this.http.post<BaseResponse>(url, body);
   }
 
+  googleLogin(){
+    const callbackUrl = `http://${window.location.hostname}:${window.location.port}/groups`;
+    const url = environment.host + '/api/User/google-login?callbackUrl=' + callbackUrl;
+
+    window.location.href = url;
+  }
+
   removeToken(): void {
     localStorage.removeItem(environment.tokenKey);
   }

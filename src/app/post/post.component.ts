@@ -1,10 +1,12 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {FormModel, GroupModel, PostModel, UserModel} from '../shared/models';
+import {Component, Input, OnInit, Output, ViewChild, EventEmitter} from '@angular/core';
+import {CommentModel, FormModel, GroupModel, PostModel, UserModel} from '../shared/models';
 import {MarkdownEditorComponent} from '../markdown-editor/markdown-editor.component';
 import {FormService} from '../shared/services/form.service';
 import {PostService} from '../shared/services/post.service';
 import {UserProgress} from '../progress-table/progress-table.component';
 import {GroupService} from '../shared/services/group.service';
+import { SignalRCommentsService } from '../shared/services/signal-r-comments.service';
+
 
 @Component({
   selector: 'app-post',
@@ -21,10 +23,15 @@ export class PostComponent implements OnInit {
   @ViewChild('answerEditor')
   answerEditor: MarkdownEditorComponent;
 
+  @Output()
+  sendCommentEvent = new EventEmitter<CommentModel>();
+
   form: FormModel;
 
   done = false;
   data: UserProgress[] = [];
+
+  newCommentInput:string;
 
   constructor(private postService: PostService, private formService: FormService, private groupService: GroupService) {
   }
@@ -89,5 +96,14 @@ export class PostComponent implements OnInit {
         error => console.log(error),
       );
     }
+  }
+
+  sendComment(){
+    this.sendCommentEvent.emit({
+          text : this.newCommentInput,
+          postId: this.post.id,
+          sender: null,
+          id: 0
+        })
   }
 }

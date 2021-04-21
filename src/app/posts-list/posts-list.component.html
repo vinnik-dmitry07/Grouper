@@ -26,4 +26,4 @@
   </mat-expansion-panel>
 </p>
 
-<app-post *ngFor="let p of posts" [post]="p" [user]="user"></app-post>
+<app-post *ngFor="let p of posts" [post]="p" [user]="user" (sendCommentEvent)="sendComment($event)"></app-post>
